@@ -1,57 +1,53 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-// Generate random values with Javascript
-function getRandomUpperCase(){
-  return String.fromCharCode(Math.floor(Math.random()*26)+65);
-}
+// Password values
+// Alphabetical characters
+alpha = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
-function getRandomLowerCase(){
-  return String.fromCharCode(Math.floor(Math.random()*26)+97);
-}
+// Integers
+integer = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-function getRandomNumber(){
-  return String.fromCharCode(Math.floor(Math.random()*10)+48);
-}
+// Symbols
+symbol = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", "\:", "\;", " < ", "=", " > ", " ? ", "@", "[", "\\", "]", " ^ ", "_", "`", "{", "|", "}", "~"];
 
-function getRandomSymbol(){
-  var symbol = " !#$%&'()*+,-./:;<=>?@[\]^_`{|}~"
-  return symbol[Math.floor(Math.random()*symbol.length)];
-}
+// Variables to be used
+var respond;
+var integer;
+var lowerAlpha;
+var upperAlpha;
+var symbol;
 
-const randomFunc = {
-  lower : getRandomLowerCase,
-  uppers : getRandomUpperCase,
-  number : getRandomNumber,
-  symbol : getRandomSymbol
-};
 
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword(lower, upper, number, symbol, length);
-  var passwordText = document.querySelector("#password");
+generateBtn.addEventListener("click", function () {
+  pass = generatePassword ();
+  document.getElementById("password").placeholder = pass;
+});
 
-  passwordText.value = password;
+//Prompt code
+// Start function to generate password
+function generatePassword() {
+  responde = parseInt(prompt("How many characters would you like your password to be? Choose between 8 and 128"));
 
-}
+  if (!respond) {
+    alert("Please enter a value");
+  }
 
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+  else if (respond < 8 || respond > 128) {
+    respond = parseInt(prompt("You must choose between 8 - 128"));
+  }
 
-// Homework criteria
+  else {
 
-GIVEN I need a new, secure password
-WHEN I click the button to generate a password
-THEN I am presented with a series of prompts for password criteria
-WHEN prompted for password criteria
-THEN I select which criteria to include in the password
-WHEN prompted for the length of the password
-THEN I choose a length of at least 8 characters and no more than 128 characters
-WHEN prompted for character types to include in the password
-THEN I choose lowercase, uppercase, numeric, and/or special characters
-WHEN I answer each prompt
-THEN my input should be validated and at least one character type should be selected
-WHEN all prompts are answered
-THEN a password is generated that matches the selected criteria
-WHEN the password is generated
-THEN the password is either displayed in an alert or written to the page
+  }
+  // Write password to the #password input
+  function writePassword() {
+    var password = generatePassword();
+    var passwordText = document.querySelector("#password");
+
+    passwordText.value = password;
+
+  }
+
+  // Add event listener to generate button
+  generateBtn.addEventListener("click", writePassword);
